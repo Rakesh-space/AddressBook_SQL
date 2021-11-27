@@ -48,3 +48,7 @@ SELECT * FROM Address_Book ORDER BY  City,First_Name;
 ------------------uc9 Add colum Family,friends, professional---------------------------------
 
 alter table Address_Book Add Family varchar(20),Friends varchar(20), Profession varchar(50);
+
+
+---------------------------uc 10 get number of contact person------------------------------
+select count (First_Name) as Number_of_ContactPerson from Address_Book;
