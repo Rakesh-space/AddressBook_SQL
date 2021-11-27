@@ -27,3 +27,8 @@ select * from Address_Book;
 
 DELETE FROM Address_Book WHERE First_Name='amol';
 select * from Address_Book;
+
+------------------- uc6 retrive data city and state----------------------
+
+select * from Address_Book where City='pune';
+select * from Address_Book where State='Maharastra';
