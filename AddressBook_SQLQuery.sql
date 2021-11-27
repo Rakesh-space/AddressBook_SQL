@@ -34,7 +34,13 @@ select * from Address_Book where City='pune';
 select * from Address_Book where State='Maharastra';
 
 ----------------------------uc7 count the city and state---------------------------------------------
+
 select count (city) as Number_of_City from Address_Book;
 select count (city) as Number_of_Employee, city  from Address_Book  group by city;
 select count (State) as Number_of_State from Address_Book;
 select count (State) as Number_of_Employee, State  from Address_Book  group by State;
+
+-----------------------uc8 Arrenge alphabeticaly order--------------------------------
+
+SELECT * FROM Address_Book ORDER BY First_Name;
+SELECT * FROM Address_Book ORDER BY  City,First_Name;
