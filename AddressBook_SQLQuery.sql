@@ -44,3 +44,7 @@ select count (State) as Number_of_Employee, State  from Address_Book  group by S
 
 SELECT * FROM Address_Book ORDER BY First_Name;
 SELECT * FROM Address_Book ORDER BY  City,First_Name;
+
+------------------uc9 Add colum Family,friends, professional---------------------------------
+
+alter table Address_Book Add Family varchar(20),Friends varchar(20), Profession varchar(50);
