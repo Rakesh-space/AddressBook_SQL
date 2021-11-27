@@ -51,4 +51,64 @@ alter table Address_Book Add Family varchar(20),Friends varchar(20), Profession 
 
 
 ---------------------------uc 10 get number of contact person------------------------------
+
 select count (First_Name) as Number_of_ContactPerson from Address_Book;
+
+-------------------- uc11 Ability Add person details frein and family colum-----------------------------
+
+  UPDATE Address_Book  set Family ='yes' where First_Name='rakesh' ;
+    UPDATE Address_Book  set Friends ='yes' where First_Name='rakesh' ;
+select * from Address_Book;
+
+-- ---------------------------uc12 Foreign key using diff table realtions-----------------------------------
+
+
+ALTER TABLE Address_Book ADD ID_Abook int primary key;
+
+--create table Address_Book1(ID_Abook int primary key,First_Name varchar(20), Last_Name varchar(20), Address varchar(250),City varchar(50),State varchar(100),Zip_Code int, phone bigint, Email varchar(50));
+--create table ContatctDetailsAbbok(Id int IDENTITY(1,1) Primary key,First_Name varchar(20), Last_Name varchar(20),ID_Abook int FOREIGN KEY REFERENCES Address_Book1(ID_Abook));
+--create table  AddressDetailsAbook(Id int FOREIGN KEY REFERENCES ContatctDetailsAbbok(Id ), Address varchar,city varchar(20),State varchar(100),Zip_Code int Not null);
+--create table  PersonContactDetailsAbook(Id int FOREIGN KEY REFERENCES ContatctDetailsAbbok(Id ), Mobile_Number int Not null,EmailId varchar(200), primary key(Mobile_Number,EmailId));
+
+drop table Address_Book1;
+create table Address_Book2(ID_Abook int primary key,AddressbookName varchar(50));
+insert into Address_Book2 values(101,'ABC');
+insert into Address_Book2 values(102,'Xyz');
+insert into Address_Book2 values(103,'abc');
+insert into Address_Book2 values(104,'sdg');
+insert into Address_Book2 values(105,'hello');
+
+
+drop table PersonContactDetailsAbook;
+create table ContatctDetailsAbook(Id int IDENTITY(1,1) Primary key,First_Name varchar(20), Last_Name varchar(20),ID_Abook int FOREIGN KEY REFERENCES Address_Book2(ID_Abook));
+insert into  ContatctDetailsAbook values('Vishal','Rathod',101);
+insert into  ContatctDetailsAbook values('shashank','rao',102);
+insert into  ContatctDetailsAbook values('rakesh','jadhao',103);
+insert into  ContatctDetailsAbook values('amol','chavan',104);
+insert into  ContatctDetailsAbook values('Rahul','Pawar',105);
+select * from ContatctDetailsAbook;
+
+create table  AddressDetailsAbook2( Address varchar(200),city varchar(20),State varchar(100),Zip_Code int Not null,Id int FOREIGN KEY REFERENCES ContatctDetailsAbook(Id));
+insert into  AddressDetailsAbook2 values('pusad','Washim','Maharastra', 444404,1);
+insert into  AddressDetailsAbook2 values('pune','pune','Maharastra',123456,2);
+insert into  AddressDetailsAbook2 values('andheri','mumbai','Maharastra',456123,3);
+insert into  AddressDetailsAbook2 values('nagpur','nagpur','Maharastra',445566,4);
+insert into  AddressDetailsAbook2 values('Panji','Panaji','Goa',235566,5);
+
+drop table ContatctDetailsAbook;
+
+create table  PersonContactDetailsAbook2( Mobile_Number bigint Not null,EmailId varchar(200), primary key(Mobile_Number,EmailId),Id int FOREIGN KEY REFERENCES ContatctDetailsAbook(Id));
+insert into PersonContactDetailsAbook2 values(7038762577,'Vishalrathod@gmail.com',1);
+insert into PersonContactDetailsAbook2 values(1236547895,'rathod@gmail.com',2);
+insert into PersonContactDetailsAbook2 values(564876231,'Vithod@gmail.com',3);
+insert into PersonContactDetailsAbook2 values(1596423564,'gcfod@gmail.com',4);
+insert into PersonContactDetailsAbook2 values(2013564213,'cfdff@gmail.com',5);
+
+select count (city) as Number_of_City from AddressDetailsAbook2;
+select count (city) as Number_of_Employee, city  from AddressDetailsAbook2  group by city;
+select count (State) as Number_of_State from AddressDetailsAbook2;
+select count (State) as Number_of_Employee, State  from AddressDetailsAbook2  group by State;
+
+SELECT * FROM AddressDetailsAbook2 ORDER BY  City;
+
+select count (First_Name) as Number_of_ContactPerson from ContatctDetailsAbook;
