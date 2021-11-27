@@ -5,3 +5,10 @@ create database Address_Book;
 create table Address_Book(First_Name varchar(20), Last_Name varchar(20), Address varchar(250),City varchar(50),State varchar(100),Zip_Code int, phone bigint, Email varchar(50));
 
 select * from Address_Book;
+
+--uc3 insert Address book contact
+insert into Address_Book values('Ovi','Rathod','pusad','Washim','Maharastra',444404,7038762577,'Ovi7038@gmail.com');
+insert into Address_Book values('shashank','rao','pune','pune','Maharastra',123456,1235642333,'dagv@gmail.com');
+insert into Address_Book values('rakesh','musale','bahadarpur','jalgoan','Maharastra',456123,8007078569,'rakeshmusale111@gmail.com');
+insert into Address_Book values('amol','chavan','nagpur','nagpur','Maharastra',445566,7569874231,'abc@gmail.com');
+
